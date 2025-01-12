@@ -13,6 +13,11 @@ A real-time web-based fall detection system using computer vision and machine le
 - Real-time visualization of detection status
 - Independent tracking and fall detection for each person
 
+## Demo
+
+### Demonstração do Sistema
+![Demo do Sistema de Detecção de Quedas](output.gif)
+
 ## Requirements
 
 - Python 3.8+
@@ -26,8 +31,7 @@ A real-time web-based fall detection system using computer vision and machine le
 ## Installation
 
 1. Clone the repository:
-```
-bash
+```bash
 git clone git@github.com:tiagofcardoso/WebFallDetection.git
 cd WebFallDetection
 ```
@@ -97,7 +101,6 @@ http://localhost:5000
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
 
 ## Acknowledgments
 
