@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fall Detection Monitor</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <style>
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #videoFeed {
+            width: 100%;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .status {
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <img id="videoFeed">
+        <div class="controls">
+            <button onclick="startMonitoring()">Start Monitoring</button>
+            <button onclick="stopMonitoring()">Stop Monitoring</button>
+        </div>
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        const socket = io();
+        const videoFeed = document.getElementById('videoFeed');
+        const statusDiv = document.getElementById('status');
+
+        socket.on('video_frame', function(data) {
+            videoFeed.src = 'data:image/jpeg;base64,' + data.frame;
+        });
+
+        socket.on('alert', function(data) {
+            statusDiv.innerHTML = data.message;
+            statusDiv.style.backgroundColor = data.type === 'fall' ? 'red' : 'yellow';
+        });
+
+        function startMonitoring() {
+            socket.emit('start_monitoring');
+        }
+
+        function stopMonitoring() {
+            socket.emit('stop_monitoring');
+        }
+    </script>
+</body>
+</html>
