@@ -1,79 +1,79 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="row g-2">
-    <!-- Coluna do vídeo -->
-    <div class="col-12 col-md-8">
-        <div class="card h-100">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="card-title mb-0">Visualização da Câmera</h5>
-                <button class="btn btn-sm btn-outline-secondary d-md-none" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#statsCollapse">
-                    <i class="bi bi-graph-up"></i> Stats
-                </button>
-            </div>
-            <div class="card-body p-0">
-                <div class="video-container">
-                    <img src="{{ url_for('main.video_feed') }}" class="img-fluid w-100">
-                    <div id="status-overlay" class="status-overlay status-monitoring">
-                        <span id="detection-status">Monitorando</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Coluna de estatísticas -->
-    <div class="col-12 col-md-4">
-        <div class="collapse d-md-block" id="statsCollapse">
-            <!-- Card de Estatísticas -->
-            <div class="card mb-2">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Estatísticas</h5>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container mb-3">
-                        <canvas id="detectionChart"></canvas>
-                    </div>
-                    <div class="row g-2">
-                        <div class="col-6">
-                            <div class="stats-card p-2 text-center bg-light rounded">
-                                <small class="text-muted">Detecções Hoje</small>
-                                <div id="todayDetections" class="stats-value">0</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="stats-card p-2 text-center bg-light rounded">
-                                <small class="text-muted">Tempo Ativo</small>
-                                <div id="monitoringTime" class="stats-value">00:00:00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card de Status do Sistema -->
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-title mb-0">Status do Sistema</h5>
-                </div>
-                <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span>CPU:</span>
-                        <div class="progress flex-grow-1 mx-2">
-                            <div id="cpuUsage" class="progress-bar" role="progressbar" style="width: 0%">0%</div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span>FPS:</span>
-                        <span id="currentFps" class="badge bg-secondary">0</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="hero fade-in">
+    <h1>Detection System</h1>
+    <p>Real-time monitoring with cutting-edge technology</p>
 </div>
+
+<section id="monitor" class="monitor-section fade-in">
+    <div class="video-card">
+        <div class="card-header">
+            <h2>Live Monitoring</h2>
+            <div id="status-overlay" class="status-overlay status-monitoring">
+                <span id="detection-status">Monitoring</span>
+            </div>
+        </div>
+        <div class="video-container">
+            <img src="{{ url_for('main.video_feed') }}" alt="Video Feed" loading="lazy">
+        </div>
+        <div class="stats-container">
+            <div class="stat-item">
+                <i class="fas fa-microchip"></i>
+                <span>CPU: <span id="cpuUsage">0%</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>FPS: <span id="currentFps">0</span></span>
+            </div>
+            <div class="stat-item">
+                <i class="fas fa-clock"></i>
+                <span>Tempo: <span id="monitoringTime">00:00:00</span></span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="features fade-in">
+    <h2>Features</h2>
+    <div class="features-grid">
+        <div class="card">
+            <i class="fas fa-camera"></i>
+            <h3>Real Time Monitoring</h3>
+            <p>Continuous monitoring with instant response</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-bell"></i>
+            <h3>Instant Alerts</h3>
+            <p>Immediate notifications in case of detection</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Advanced Analysis</h3>
+            <p>Detailed reports and statistics</p>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about fade-in">
+    <h2>About the System</h2>
+    <div class="card">
+        <p>Our solution uses cutting-edge AI technology to provide accurate and reliable real-time detection.</p>
+    </div>
+</section>
+
+<section id="contact" class="contact fade-in">
+    <h2>Contact Us</h2>
+    <div class="card">
+        <form>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Your message" required></textarea>
+            <button class="btn">Send</button>
+        </form>
+    </div>
+</section>
 
 <!-- Incluir Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

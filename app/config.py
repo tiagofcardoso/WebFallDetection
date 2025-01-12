@@ -1,15 +1,15 @@
 import cv2
 import os
-#from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # Garantir que o .env seja carregado
-#load_dotenv()
+# load_dotenv()
 
 # Twilio Configuration with validation
-TWILIO_ACCOUNT_SID = 'AC7d746a6c25ce284435434b65f7de6ea8'
-TWILIO_AUTH_TOKEN = 'eed324e8f0d686157b1aa949b53e720c'
-TWILIO_FROM = 'whatsapp:+14155238886'
-TWILIO_TO = 'whatsapp:+351696683415'
+TWILIO_ACCOUNT_SID = 'TWILIO_ACCOUNT_SID'
+TWILIO_AUTH_TOKEN = 'TWILIO_AUTH_TOKEN'
+TWILIO_FROM = 'whatsapp:TWILIO_FROM'
+TWILIO_TO = 'whatsapp:TWILIO_TO'
 
 # Validar configurações do Twilio
 if not all([TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_FROM, TWILIO_TO]):
